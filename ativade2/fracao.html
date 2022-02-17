@@ -1,0 +1,43 @@
+<canvas width="1200" height="800"></canvas>
+
+<script>
+    var tela = document.querySelector("canvas");
+    var pincel = tela.getContext("2d");
+
+    pincel.font='20px Georgia';
+    pincel.fillStyle='black';
+    pincel.fillText("Qual é a fração?", 10, 80);
+
+    function desenhaQuadrado(x, y){
+        pincel.fillStyle = "green";
+        pincel.fillRect(x,y,50,50);
+    }
+    function desenhaBorda( x, y){
+        pincel.strokeStyle = "black";
+        pincel.strokeRect(x,y,50,50);
+    }
+    
+    for(var a = 0; a < 4 ; a++){
+        desenhaBorda(50*a, 0);
+        if(a<3){
+            desenhaQuadrado(50*a, 0);
+        }
+    }
+
+    //versão professor
+    // function desenhaQuadrado(x, y, tamanho, cor) {
+    //     var tela = document.querySelector('canvas');
+    //     var pincel = tela.getContext('2d');
+
+    //     pincel.fillStyle=cor;
+    //     pincel.fillRect(x,y, tamanho, tamanho);
+    //     pincel.strokeStyle='black';
+    //     pincel.strokeRect(x,y, tamanho, tamanho);
+    // }
+
+    // desenhaQuadrado(50, 50, 100, 'green');
+    // desenhaQuadrado(150, 50, 100, 'green');
+    // desenhaQuadrado(250, 50, 100, 'green');
+    // desenhaQuadrado(350, 50, 100, 'white');
+
+</script>
