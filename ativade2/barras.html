@@ -1,0 +1,60 @@
+<canvas width="1200" height="800"></canvas>
+
+<script>
+    var tela = document.querySelector("canvas");
+    var pincel = tela.getContext("2d");
+
+    //tela.getContext('2d') - escolher o tipo de pincel
+    //pincel.font='tamanhopx fonte';
+    //pincel.fillStyle='cor';
+    //pincel.fillText("texto", coordenadas);
+    //pincel.fillStyle - escolher a cor
+    //pincel.fillRect(coordenas iniciais , coordenadas finais) - para preencher
+    //pincel.beginPath(); - ao iniciar uma trilha de movimenos com o pincel
+    //pincel.moveTo(coordenadas) - para mover o pincel sem pintar
+    //pincel.lineTo(coordenadas); - para mover o pincel pintando o caminho
+    //pincel.arc(coordenadas, raio, grau de ângulo);
+    //pincel.fill(); - para finalizar o caminho?
+
+    pincel.font = "20px Arial";
+    pincel.fillStyle = "black";
+    pincel.fillText("2015", 10 ,15);
+
+    var serie2015 = [50,25,20,5];
+    var serie2016 = [65,20,13,2];
+    var cores = ["red", "yellow", "green", "blue"];
+
+    var a = 200
+    var b = 0
+    var x = 5
+    function barra(cor,y){
+        pincel.fillStyle = cor;
+        pincel.fillRect(x,20,100,a-b); 
+        b = b+y  
+    }
+
+    barra("red",5);
+    barra("green",20);
+    barra("yellow",25);
+    barra("blue",50);
+
+    x = 115
+    a = 200
+
+    pincel.font = "20px Arial";
+    pincel.fillStyle = "black";
+    pincel.fillText("2016", 125,15);
+
+    barra("red",2);
+    barra("green",13);
+    barra("yellow",20);
+    barra("blue",65);
+
+    // b = 4
+    // for(a=0;a<b;a++){
+    //     var teste = serie2015[a]
+    //     document.write(teste);
+    // }
+    
+
+</script>
