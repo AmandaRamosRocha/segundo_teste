@@ -1,4 +1,5 @@
 <canvas width="600" height="400"></canvas>
+<input type="color">
 
 <script>
     var tela = document.querySelector('canvas');
@@ -6,47 +7,50 @@
     pincel.fillStyle = 'grey';
     pincel.fillRect(0, 0, 600, 400);
 
-    var cores = ["blue", "red", "green"]
+   
     var raio = 10;
+    var desenha = false
+    var paleta = document.querySelector("input");
     
+
     function desenhaCirculo(evento) {
 
-        var x = evento.pageX - tela.offsetLeft;
-        var y = evento.pageY - tela.offsetTop;
-  
-        pincel.fillStyle = cores[n];
-        if(evento.shiftKey){
-            if(raio<40){
-                raio = raio + 10;
-            }else{
-                alert("Máximo atingido")
-            }
-            
-        }
-        if(evento.ctrlKey){
-                if(raio>10){
-                    raio = raio - 10
+        if(desenha){
+            var x = evento.pageX - tela.offsetLeft;
+            var y = evento.pageY - tela.offsetTop;
+    
+            pincel.fillStyle = paleta.value;
+            if(evento.shiftKey){
+                if(raio<40){
+                    raio = raio + 10;
                 }else{
-                    alert("Mínimo Atingido")
+                    alert("Máximo atingido");
                 }
+                
+            }
+            if(evento.ctrlKey){
+                    if(raio>10){
+                        raio = raio - 10;
+                    }else{
+                        alert("Mínimo Atingido");
+                    }
+            }
+            pincel.beginPath();
+            pincel.arc(x, y, raio, 0, 2 * 3.14);
+            pincel.fill();
         }
-        pincel.beginPath();
-        pincel.arc(x, y, raio, 0, 2 * 3.14);
-        pincel.fill();
-        console.log(x + ',' + y);
 
     }
-
-    var n=0
-    function mudaCor() {
-        if(n >= (cores.length - 1)){
-            n = 0
-        }else{
-            n++
-        }
+    tela.onmousedown = function(){
+        desenha = true;
     }
-    tela.oncontextmenu = mudaCor;
+    tela.onmouseup = function(){
+        desenha = false;
+    }
+
+    // tela.oncontextmenu = mudaCor;
+    tela.onmousemove = desenhaCirculo;
     tela.onclick = desenhaCirculo;
-
+    
 
 </script>
