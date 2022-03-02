@@ -9,6 +9,7 @@
 
     var x = 20;
     var y = 20;
+    var raio = 10;
 
     // códigos do teclado
 
@@ -36,7 +37,7 @@
     function atualizaTela() {
 
         limpaTela();
-        desenhaCirculo(x, y, 10);
+        desenhaCirculo(x, y, raio);
     }
 
     setInterval(atualizaTela, 20);
@@ -44,7 +45,29 @@
     function leDoTeclado(evento) {
 
         // sua lógica virá aqui
-        
+        var clique = evento.keyCode;
+        andar = 10;
+        if(clique == esquerda){
+            x = x - andar;
+        }else if(clique == direita){
+            x = x + andar;
+        }else if(clique == cima){
+            y = y - andar;
+        }else if(clique == baixo){
+            y = y + andar;
+        }
+
+        if(x>=600+raio){
+            x = 0
+        }else if(x<=0-raio){
+            x = 600
+        }
+        if(y>=400+raio){
+            y = 0
+        }else if(y<=0-raio){
+            y = 400
+        }
+        atualizaTela();
     }
 
    document.onkeydown = leDoTeclado;
